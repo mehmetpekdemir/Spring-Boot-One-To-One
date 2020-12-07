@@ -1,2 +1,1 @@
-# spring-projects
-Spring Boot Projects
+# Spring Boot One To One
