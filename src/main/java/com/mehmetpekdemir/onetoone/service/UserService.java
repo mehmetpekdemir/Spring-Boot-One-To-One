@@ -15,4 +15,6 @@ public interface UserService {
 
 	void signUp(CreateSignUpRequest createSignUpRequest);
 
+	boolean existsUserByUsername(String username);
+
 }
