@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existsUserByUsername(String username) {
-		return !userRepository.existsUserByUsername(username);
+		return userRepository.existsUserByUsername(username);
 	}
 
 }
