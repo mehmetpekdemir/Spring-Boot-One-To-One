@@ -8,7 +8,7 @@ import com.mehmetpekdemir.onetoone.common.GenericResponse;
 import com.mehmetpekdemir.onetoone.common.annotation.ApiController;
 import com.mehmetpekdemir.onetoone.common.constant.GenericMessages;
 import com.mehmetpekdemir.onetoone.common.constant.SwaggerMessages;
-import com.mehmetpekdemir.onetoone.dto.request.CreateSignUpRequest;
+import com.mehmetpekdemir.onetoone.dto.request.SignUpCreateRequest;
 import com.mehmetpekdemir.onetoone.dto.request.LoginRequest;
 import com.mehmetpekdemir.onetoone.service.UserService;
 
@@ -54,9 +54,9 @@ public class UserController {
 	@PostMapping("sign-up")
 	public ResponseEntity<?> signUp( //
 			@ApiParam(value = "Create Sign-up Request", required = true) //
-			@RequestBody CreateSignUpRequest createSignUpRequest) {
+			@RequestBody SignUpCreateRequest signUpCreateRequest) {
 
-		userService.signUp(createSignUpRequest);
+		userService.signUp(signUpCreateRequest);
 		return ResponseEntity.ok(new GenericResponse(GenericMessages.SUCCESSFULLY_CREATED));
 	}
 }

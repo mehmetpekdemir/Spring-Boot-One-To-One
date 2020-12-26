@@ -1,7 +1,5 @@
 package com.mehmetpekdemir.onetoone.dto.request;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -23,12 +21,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldMatch(first = "password", second = "confirmPassword", message = "{one-to-one.constraint.password.FieldMatch.message}")
-@ApiModel(value = "Create Sign-Up Request")
-public final class CreateSignUpRequest {
+@ApiModel(value = " User Information Update Request")
+public final class UserInformationUpdateRequest {
 
 	@NotNull
 	@UniqueUsername
-	@ApiModelProperty(value = "Username", required = true)
+	@ApiModelProperty(value = "User Name", required = true)
 	private String username;
 
 	@NotNull
@@ -52,8 +50,5 @@ public final class CreateSignUpRequest {
 	@NotNull
 	@ApiModelProperty(value = "E-mail", required = true)
 	private String email;
-
-	@ApiModelProperty(value = "Birth Date")
-	private LocalDate birthDate;
 
 }

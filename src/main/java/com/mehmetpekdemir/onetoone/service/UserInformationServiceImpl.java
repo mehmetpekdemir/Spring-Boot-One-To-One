@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mehmetpekdemir.onetoone.common.constant.ExceptionMessages;
-import com.mehmetpekdemir.onetoone.dto.request.UpdateUserInformationRequest;
+import com.mehmetpekdemir.onetoone.dto.request.UserInformationUpdateRequest;
 import com.mehmetpekdemir.onetoone.dto.response.UserInformationResponse;
 import com.mehmetpekdemir.onetoone.entity.UserEntity;
 import com.mehmetpekdemir.onetoone.entity.UserInformationEntity;
@@ -34,7 +34,6 @@ public class UserInformationServiceImpl implements UserInformationService {
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	public List<UserInformationResponse> getUserInformations() {
-
 		return userInformationRepository.findAll().stream() //
 				.map(userInformation -> mapToUserInformationResponse(userInformation)) //
 				.collect(Collectors.toList());
@@ -43,7 +42,6 @@ public class UserInformationServiceImpl implements UserInformationService {
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	public UserInformationResponse getUserInformationByUserName(String username) {
-
 		final UserEntity user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new CustomException(ExceptionMessages.USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
@@ -55,19 +53,18 @@ public class UserInformationServiceImpl implements UserInformationService {
 
 	@Override
 	@Transactional
-	public void updateUserInformation(UpdateUserInformationRequest updateUserInformationRequest) {
-
-		final UserEntity user = userRepository.findByUsername(updateUserInformationRequest.getUsername())
+	public void updateUserInformation(UserInformationUpdateRequest userInformationUpdateRequest) {
+		final UserEntity user = userRepository.findByUsername(userInformationUpdateRequest.getUsername())
 				.orElseThrow(() -> new CustomException(ExceptionMessages.USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
 		final UserInformationEntity userInformation = userInformationRepository.findById(user.getId()).orElseThrow(
 				() -> new CustomException(ExceptionMessages.USER_INFORMATION_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
-		user.setUsername(updateUserInformationRequest.getUsername());
-		user.setPassword(updateUserInformationRequest.getPassword());
-		userInformation.setFirstName(updateUserInformationRequest.getFirstName());
-		userInformation.setLastName(updateUserInformationRequest.getLastName());
-		userInformation.setEmail(updateUserInformationRequest.getEmail());
+		user.setUsername(userInformationUpdateRequest.getUsername());
+		user.setPassword(userInformationUpdateRequest.getPassword());
+		userInformation.setFirstName(userInformationUpdateRequest.getFirstName());
+		userInformation.setLastName(userInformationUpdateRequest.getLastName());
+		userInformation.setEmail(userInformationUpdateRequest.getEmail());
 
 		final UserInformationEntity updatedUserInformation = userInformationRepository.save(userInformation);
 		user.setUserInformationEntity(updatedUserInformation);
@@ -78,7 +75,6 @@ public class UserInformationServiceImpl implements UserInformationService {
 	@Override
 	@Transactional
 	public void deleteUserInformation(String username) {
-
 		final UserEntity user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new CustomException(ExceptionMessages.USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 

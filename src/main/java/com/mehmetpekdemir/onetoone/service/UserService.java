@@ -1,6 +1,6 @@
 package com.mehmetpekdemir.onetoone.service;
 
-import com.mehmetpekdemir.onetoone.dto.request.CreateSignUpRequest;
+import com.mehmetpekdemir.onetoone.dto.request.SignUpCreateRequest;
 import com.mehmetpekdemir.onetoone.dto.request.LoginRequest;
 import com.mehmetpekdemir.onetoone.dto.response.LoginResponse;
 
@@ -13,7 +13,7 @@ public interface UserService {
 
 	LoginResponse login(LoginRequest loginRequest);
 
-	void signUp(CreateSignUpRequest createSignUpRequest);
+	void signUp(SignUpCreateRequest signUpCreateRequest);
 
 	boolean existsUserByUsername(String username);
 

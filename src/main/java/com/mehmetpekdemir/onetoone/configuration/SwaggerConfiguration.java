@@ -31,7 +31,7 @@ public class SwaggerConfiguration {
 
 	private ApiInfo apiEndPointsInfo() {
 		return new ApiInfoBuilder()//
-				.title("OneToOne Project")//
+				.title("One To One Project")//
 				.description("Spring Boot OneToOne Project REST API")//
 				.license("Apache 2.0")//
 				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")//

@@ -3,7 +3,7 @@ package com.mehmetpekdemir.onetoone.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mehmetpekdemir.onetoone.dto.request.CreateSignUpRequest;
+import com.mehmetpekdemir.onetoone.dto.request.SignUpCreateRequest;
 import com.mehmetpekdemir.onetoone.dto.request.LoginRequest;
 import com.mehmetpekdemir.onetoone.dto.response.LoginResponse;
 import com.mehmetpekdemir.onetoone.entity.UserEntity;
@@ -23,27 +23,24 @@ public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
 
-	// Add jwt auth.
-	// Look github.com/mehmetpekdemir -> jwt repo
-
 	@Override
 	@Transactional
 	public LoginResponse login(LoginRequest loginRequest) {
-
+		// Add jwt auth.
+		// Look github.com/mehmetpekdemir -> jwt repo
 		return null;
 	}
 
 	@Override
 	@Transactional
-	public void signUp(CreateSignUpRequest createSignUpRequest) {
-
-		UserEntity userEntity = new UserEntity(createSignUpRequest.getUsername(), createSignUpRequest.getPassword());
+	public void signUp(SignUpCreateRequest signUpCreateRequest) {
+		UserEntity userEntity = new UserEntity(signUpCreateRequest.getUsername(), signUpCreateRequest.getPassword());
 
 		userEntity.setUserInformationEntity(new UserInformationEntity( //
-				createSignUpRequest.getFirstName(), //
-				createSignUpRequest.getLastName(), //
-				createSignUpRequest.getEmail(), //
-				createSignUpRequest.getBirthDate()));
+				signUpCreateRequest.getFirstName(), //
+				signUpCreateRequest.getLastName(), //
+				signUpCreateRequest.getEmail(), //
+				signUpCreateRequest.getBirthDate()));
 
 		userRepository.save(userEntity);
 	}

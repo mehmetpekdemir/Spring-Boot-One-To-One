@@ -2,7 +2,7 @@ package com.mehmetpekdemir.onetoone.service;
 
 import java.util.List;
 
-import com.mehmetpekdemir.onetoone.dto.request.UpdateUserInformationRequest;
+import com.mehmetpekdemir.onetoone.dto.request.UserInformationUpdateRequest;
 import com.mehmetpekdemir.onetoone.dto.response.UserInformationResponse;
 
 /**
@@ -16,7 +16,7 @@ public interface UserInformationService {
 
 	UserInformationResponse getUserInformationByUserName(String username);
 
-	void updateUserInformation(UpdateUserInformationRequest updateUserInformationRequest);
+	void updateUserInformation(UserInformationUpdateRequest userInformationUpdateRequest);
 
 	void deleteUserInformation(String username);
 

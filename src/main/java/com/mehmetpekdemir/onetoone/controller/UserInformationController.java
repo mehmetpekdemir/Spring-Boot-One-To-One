@@ -13,7 +13,7 @@ import com.mehmetpekdemir.onetoone.common.GenericResponse;
 import com.mehmetpekdemir.onetoone.common.annotation.SecureApiController;
 import com.mehmetpekdemir.onetoone.common.constant.GenericMessages;
 import com.mehmetpekdemir.onetoone.common.constant.SwaggerMessages;
-import com.mehmetpekdemir.onetoone.dto.request.UpdateUserInformationRequest;
+import com.mehmetpekdemir.onetoone.dto.request.UserInformationUpdateRequest;
 import com.mehmetpekdemir.onetoone.service.UserInformationService;
 
 import io.swagger.annotations.ApiOperation;
@@ -71,9 +71,9 @@ public class UserInformationController {
 	@PutMapping("v1/user-information")
 	public ResponseEntity<?> updateUserInformation( //
 			@ApiParam(value = "Update User Information Request", required = true) //
-			@Valid @RequestBody UpdateUserInformationRequest updateUserInformationRequest) {
+			@Valid @RequestBody UserInformationUpdateRequest userInformationUpdateRequest) {
 
-		userInformationService.updateUserInformation(updateUserInformationRequest);
+		userInformationService.updateUserInformation(userInformationUpdateRequest);
 		return ResponseEntity.ok(new GenericResponse(GenericMessages.SUCCESSFULLY_UPDATED));
 	}
 
